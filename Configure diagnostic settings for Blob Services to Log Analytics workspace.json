@@ -1,0 +1,19 @@
+{
+  "Effect" : {
+    "Values":	 "DeployIfNotExists"
+   },
+
+  "Profile name" : {
+    "Values":	 "blobServicesDiagnosticsLogsToWorkspace"
+   },
+   
+   "Log Analytics workspace":{
+	"Value"	:"flowlogla"
+},
+   "Enable metrics":{
+    "Value"	:"True"
+  },
+   "Enable logs":{
+     "Value"	:"True"
+   }
+}
