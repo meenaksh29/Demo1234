@@ -1,5 +1,4 @@
-{
-  "properties": {
+{  "properties": {
     "displayName": "Deploy Adaptive Application Control and Enable Safe Application Definitions",
     "description": "This policy deploys Adaptive Application Control and ensures that safe application definitions are enabled.",
     "mode": "Indexed",
