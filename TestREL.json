@@ -1,0 +1,54 @@
+{
+  "properties": {
+    "displayName": "Deploy Adaptive Application Control and Enable Safe Application Definitions",
+    "description": "This policy deploys Adaptive Application Control and ensures that safe application definitions are enabled.",
+    "mode": "Indexed",
+    "parameters": {},
+    "policyRule": {
+      "if": {
+        "not": {
+          "field": "Microsoft.Security/locations/adaptationControlEnabled",
+          "equals": "True"
+        }
+      },
+      "then": {
+        "effect": "deployIfNotExists",
+        "details": {
+          "type": "Microsoft.Security/locations/adaptiveApplicationControl",
+          "existenceCondition": {
+            "field": "Microsoft.Security/locations/adaptationControlEnabled",
+            "equals": "True"
+          },
+          "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+          ],
+          "deployment": {
+            "properties": {
+              "mode": "incremental",
+              "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {},
+                "resources": [
+                  {
+                    "type": "Microsoft.Security/locations/adaptiveApplicationControl",
+                    "name": "default",
+                    "apiVersion": "2021-06-01-preview",
+                    "properties": {
+                      "enabled": true,
+                      "safeAppPaths": []
+                    }
+                  }
+                ]
+              },
+              "parameters": {}
+            }
+          }
+        }
+      }
+    }
+  },
+  "metadata": {
+    "category": "Security"
+  }
+}
